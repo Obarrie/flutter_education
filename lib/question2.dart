@@ -21,131 +21,96 @@ class _Question2State extends State<Question2> {
       appBar: AppBar(
         title: const Text('My First App'),
       ),
-        body: SingleChildScrollView(
-          child:  Center(
-            child: Column( 
-              mainAxisAlignment: MainAxisAlignment.center,//Column widget is there to make widgets into a column. this widget takes in an argument called children which
-              children:[ 
-              const SizedBox(height: 20),
-              //const Expanded(
-                const Text(
-                  'What is your favorite animal',
-                  style: TextStyle(fontSize: 30, color:Colors.purple),
-                  textAlign: TextAlign.center,
-                ),// takes in a list of widgets
-              //),
+      body: Center(
+        child: Column( 
+          mainAxisAlignment: MainAxisAlignment.center,
+          children:[ 
+            const SizedBox(height: 20),
+            const Text(
+              'What is your favorite animal',
+              style: TextStyle(fontSize: 30, color:Colors.purple),
+              textAlign: TextAlign.center,
+            ),
 
-                // Expanded(
-                //   flex: 6,
-                //   child: Center(
-               SizedBox(height: MediaQuery.of(context).size.height*0.03),
-               // TODO: Sizedbox to spacer widget
-                  //Spacers take flex sizes
-                   // - Wrap my custombutton in the expanded
+            const Spacer(flex:1),
+            mycustombutton(
+              context:context,
+              label: 'DOG', 
+              onPressed: (){
+                setState((){
+                  _index = 0;
+                });
+              }, 
+              buttonColor: Colors.orange,
+            ),
 
-                 //Expanded(   
-                   //child:Center(
-                    mycustombutton(
-                        label: 'DOG', 
-                        onPressed: (){
-                          setState((){
-                            _index = 1;
-                          });
-                        }, 
-                        buttonColor: Colors.orange,
-                      ),
-                   //)
-                 //),
+            const Spacer(flex:1),
+            mycustombutton(
+              context:context,
+              label: 'CAT', 
+              onPressed: (){
+                setState((){
+                  _index = 1;
+                });
+              }, 
+              buttonColor: Colors.purple,
+            ),
 
-                   SizedBox(height: MediaQuery.of(context).size.height*0.03),
-                    //Expanded(
-                       //child:Center(
-                        mycustombutton(
-                              label: 'CAT', 
-                              onPressed: (){
-                                setState((){
-                                  _index = 2;
-                                });
-                              }, 
-                              buttonColor: Colors.purple,
-                            ),
-                       //)
-                    //),
+            const Spacer(flex: 1),
+            mycustombutton(
+              context:context,
+              label: 'BIRD', 
+              onPressed: (){
+                setState((){
+                  _index = 2;
+                });
+              }, 
+              buttonColor: Colors.red,
+            ),
 
-                // Spacer(flex:1),
-                // Expanded(flex:5)
-                
-                //Wont work until you take out size boxes and other hardcoded sizes
+            const Spacer(flex: 1),
+            mycustombutton(
+              context:context,
+              label: 'OTHER', 
+              onPressed: (){
+                setState((){
+                  _index = 3;
+                });
+              }, 
+              buttonColor: Colors.green,
+            ),
 
-                SizedBox(height: MediaQuery.of(context).size.height*0.03),
-                    // Expanded(
-                    //   child: Center(
-                      mycustombutton(
-                          label: 'BIRD', 
-                          onPressed: (){
-                            setState((){
-                              _index = 3;
-                            });
-                          }, 
-                          buttonColor: Colors.red,
-                        ),
-                    //   )
-                    // ),
-
-                 
-
-                 SizedBox(height: MediaQuery.of(context).size.height*0.03),
-                  // Expanded(
-                  //   child:Center(
-                    mycustombutton(
-                        label: 'OTHER', 
-                        onPressed: (){
-                          setState((){
-                            _index = 4;
-                          });
-                        }, 
-                        buttonColor: Colors.green,
-                      ),
-                  //   )
-                  // ),
-
-                         
-                SizedBox(height: MediaQuery.of(context).size.height*0.1),
-                  Text( _sounds[_index % _sounds.length],
-                        style: const TextStyle(
-                          color: Color.fromARGB(255, 245, 7, 7),
-                          fontSize: 40,
-                        ),
-                      ), 
-
-                  Image(
-                    // image: AssetImage('assets/images/dog.jpeg'),
-                    image: AssetImage(_images[_index % _images.length]),
-                    height: 160,
-                    width: 200,   
-                  ),   
-
-                
-                  //Expanded(
-                    //child: Center(
-                  SizedBox(height: MediaQuery.of(context).size.height*0.2),
-                      mycustombutton(
-                          label: 'BACK', 
-                          onPressed: (){
-                             Navigator.pop(context,);
-                          }, 
-                          buttonColor: Colors.blue,
-                        ),
-                     // )
-                    //),
-
-                 ],
-                )
+            const Spacer(flex: 3),
+            Text(
+              _sounds[_index % _sounds.length],
+              style: const TextStyle(
+                color: Color.fromARGB(255, 245, 7, 7),
+                fontSize: 40,
               ),
-            )
-          );
-        }
-      }
+            ), 
+            Image(
+              image: AssetImage(_images[_index % _images.length]),
+              height: MediaQuery.of(context).size.height * 0.3,
+              width: MediaQuery.of(context).size.width * 0.5,
+            ),
+            
+            const Spacer(flex: 2),
+            mycustombutton(
+              context:context,
+              label: 'BACK', 
+              onPressed: (){
+                Navigator.pop(context,);
+              }, 
+              buttonColor: Colors.blue,
+            ),
+             const Spacer(flex: 1),
+
+          ],
+        ),
+      ),
+    );
+  }
+}
 
                     // ElevatedButton(
                     //   onPressed: (){
@@ -276,5 +241,6 @@ class _Question2State extends State<Question2> {
                   // ),
 
 //TODO:
-  // Make class that has all buttons and then import that into the files where I am using the buttons DONE
-  // Then just call the buttons based on how you need them. DONE
+//1. Work on understanding spacer and expanded
+//2. Run app on android and understand using the emulator
+
